@@ -1444,6 +1444,82 @@
     </div>
 </section>
 
+<section class="section reveal" id="case-study">
+    <div class="wrap">
+        <div class="section-head">
+            <h2 class="section-title">Campus Lost &amp; Found — Case Study</h2>
+            <p class="section-subtitle">Computer science capstone</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>The Problem</h3>
+                    <p>Campus lost-and-found usually lives on a bulletin board, in an email thread, or at a front desk. Students do not have one place to report an item, search what others posted, and message the person who lost or found it.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>The Solution</h3>
+                    <p>Campus Lost &amp; Found is a mobile app I'm building as my computer science capstone. Users can report lost and found items with optional photos, search and filter listings, see possible matches, message privately about a specific item, and mark an item recovered. It is a student project, not an official SMSU product.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Technical Approach</h3>
+                    <p>The app is React Native, Expo, and TypeScript. The Expo client talks directly to Firebase rather than a custom server: Authentication for email/password accounts and password reset, Cloud Firestore for items, conversations, messages, and in-app notifications, and Storage for photos. Chat uses Firestore listeners. Photos can be taken with the camera or chosen from the gallery.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Smart Matching</h3>
+                    <p>Matching runs on the device. It is a weighted comparison of report fields, not machine learning or image recognition. Pairs that reach a threshold of 40 are listed. Recovered and hidden items are excluded.</p>
+                    <dl class="about-details">
+                        <div>
+                            <dt>Category</dt>
+                            <dd>40 points</dd>
+                        </div>
+                        <div>
+                            <dt>Location</dt>
+                            <dd>Up to 25 points</dd>
+                        </div>
+                        <div>
+                            <dt>Keywords</dt>
+                            <dd>Up to 20 points</dd>
+                        </div>
+                        <div>
+                            <dt>Date</dt>
+                            <dd>Up to 15 points</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Challenges</h3>
+                    <p>Without a custom backend, auth, data, photos, chat, and notifications all go through the Firebase client SDK. I needed matching I could explain and demo, so I used an explicit point system instead of a black-box model. Keeping those flows in one Expo app was a large part of the work.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>What I Learned</h3>
+                    <p>I learned how to wire a mobile client to Firebase Authentication, Firestore, and Storage, including live chat with listeners. I also learned when a simple client-side score is the honest approach: it is transparent, but it is not computer vision and it is not a production campus service.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Current Status</h3>
+                    <p>This is a student-built capstone prototype intended to run in Expo Go. Core flows are implemented: authentication, reports, photo uploads, search and filters, matching, private messaging, recovered status, and in-app notifications. It is not on the App Store or Google Play, and there is no hosted live demo.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="project-links">
+                    <a href="https://github.com/kirangiri3210-wq/campus-lost-found" class="text-link" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="section reveal" id="contact">
     <div class="wrap">
         <div class="section-head">
