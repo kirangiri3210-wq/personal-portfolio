@@ -29,6 +29,11 @@
             document.documentElement.setAttribute("data-theme", theme);
             document.documentElement.style.colorScheme = theme;
             document.documentElement.classList.add("js");
+            requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
+                    document.documentElement.classList.add("theme-ready");
+                });
+            });
         })();
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,6 +87,9 @@
             font-size: 1.0625rem;
             line-height: 1.7;
             min-height: 100vh;
+        }
+
+        html.theme-ready body {
             transition: background-color 0.38s ease, color 0.38s ease;
         }
 
@@ -92,6 +100,7 @@
         a {
             color: var(--accent);
             text-underline-offset: 0.18em;
+            transition: color 0.2s ease;
         }
 
         a:hover { color: var(--accent-hover); }
@@ -131,6 +140,9 @@
             transform-origin: left center;
             z-index: 2000;
             pointer-events: none;
+        }
+
+        html.theme-ready .scroll-progress {
             transition: background-color 0.38s ease;
         }
 
@@ -149,6 +161,9 @@
             background: var(--bg);
             border-bottom: 1px solid var(--border);
             overflow: visible;
+        }
+
+        html.theme-ready .site-header {
             transition: background-color 0.38s ease, border-color 0.38s ease;
         }
 
@@ -170,6 +185,7 @@
             text-decoration: none;
             letter-spacing: -0.02em;
             flex-shrink: 0;
+            transition: color 0.2s ease;
         }
 
         .logo:hover { color: var(--accent); }
@@ -181,6 +197,9 @@
             align-items: center;
             flex-wrap: wrap;
             justify-content: flex-end;
+        }
+
+        html.theme-ready nav ul {
             transition: background-color 0.38s ease;
         }
 
@@ -189,6 +208,7 @@
             text-decoration: none;
             font-size: 0.92rem;
             font-weight: 500;
+            transition: color 0.2s ease, box-shadow 0.2s ease;
         }
 
         nav a:hover,
@@ -227,10 +247,17 @@
             font-size: 0.78rem;
             font-weight: 600;
             letter-spacing: 0.04em;
+        }
+
+        html.theme-ready .theme-toggle {
             transition: background-color 0.38s ease, color 0.38s ease, border-color 0.38s ease;
         }
 
-        .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+        .theme-toggle:hover,
+        .theme-toggle:focus-visible {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
 
         .hamburger {
             display: none;
@@ -243,6 +270,9 @@
             background: transparent;
             cursor: pointer;
             padding: 0.5rem;
+        }
+
+        html.theme-ready .hamburger {
             transition: background-color 0.38s ease, border-color 0.38s ease;
         }
 
@@ -308,13 +338,15 @@
             font-size: 0.95rem;
             border: 1px solid var(--accent);
             cursor: pointer;
-            transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
         }
 
-        .btn:hover {
+        .btn:hover,
+        .btn:focus-visible {
             background: var(--accent-hover);
             border-color: var(--accent-hover);
             color: #fff;
+            transform: translateY(-1px);
         }
 
         .text-link {
@@ -326,12 +358,16 @@
             font-size: 0.98rem;
             font-weight: 600;
             cursor: pointer;
+            text-decoration: underline;
+            text-decoration-color: transparent;
+            text-underline-offset: 0.2em;
+            transition: color 0.2s ease, text-decoration-color 0.2s ease, transform 0.2s ease;
         }
 
-        .text-link:hover {
+        .text-link:hover,
+        .text-link:focus-visible {
             color: var(--accent);
-            text-decoration: underline;
-            text-underline-offset: 0.2em;
+            text-decoration-color: currentColor;
         }
 
         .hero-image img {
@@ -352,7 +388,7 @@
 
             .hero-image img:hover {
                 border-color: var(--accent);
-                transform: scale(1.015);
+                transform: translateY(-2px);
             }
         }
 
@@ -497,21 +533,21 @@
             gap: 1rem 1.75rem;
             padding: 1.7rem 0;
             border-bottom: 1px solid var(--border);
-            transition: transform 0.22s ease, box-shadow 0.22s ease;
+            transition: transform 0.28s ease, box-shadow 0.28s ease;
         }
 
         .project-card:first-child { border-top: 1px solid var(--border); }
 
         @media (hover: hover) {
             .project-card:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 8px 22px color-mix(in srgb, var(--text) 8%, transparent);
+                transform: translateY(-3px);
+                box-shadow: 0 10px 24px color-mix(in srgb, var(--text) 9%, transparent);
             }
         }
 
         .project-card:focus-visible {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 22px color-mix(in srgb, var(--text) 8%, transparent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px color-mix(in srgb, var(--text) 9%, transparent);
         }
 
         .project-kicker {
@@ -639,6 +675,7 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
+            transition: color 0.2s ease;
         }
 
         .social-link:hover { color: var(--accent); }
@@ -663,6 +700,7 @@
             color: var(--text);
             font-family: inherit;
             font-size: 1rem;
+            transition: border-color 0.2s ease;
         }
 
         .form-group input:focus,
@@ -695,6 +733,9 @@
             padding: 1.6rem 0 2.1rem;
             color: var(--muted);
             font-size: 0.9rem;
+        }
+
+        html.theme-ready footer {
             transition: background-color 0.38s ease, color 0.38s ease, border-color 0.38s ease;
         }
 
@@ -708,6 +749,7 @@
         footer a {
             color: var(--text);
             text-decoration: none;
+            transition: color 0.2s ease;
         }
 
         footer a:hover { color: var(--accent); }
@@ -726,10 +768,18 @@
             border: 1px solid var(--border);
             text-decoration: none;
             z-index: 900;
-            transition: background-color 0.38s ease, color 0.38s ease, border-color 0.38s ease;
         }
 
-        .back-top:hover { color: var(--accent); border-color: var(--accent); }
+        html.theme-ready .back-top {
+            transition: background-color 0.38s ease, color 0.38s ease, border-color 0.38s ease, transform 0.2s ease;
+        }
+
+        .back-top:hover,
+        .back-top:focus-visible {
+            color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-1px);
+        }
 
         .back-top.show { display: flex; }
 
@@ -787,9 +837,15 @@
             cursor: pointer;
             font-size: 0.95rem;
             font-weight: 600;
+            transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
         }
 
-        .close-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .close-btn:hover,
+        .close-btn:focus-visible {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
 
         @media (max-width: 960px) {
             nav ul {
@@ -868,15 +924,50 @@
             footer .wrap { flex-direction: column; }
         }
 
+        @keyframes intro-in {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .js .site-header {
+            animation: intro-in 0.48s ease both;
+        }
+
+        .js .hero h1 {
+            animation: intro-in 0.5s ease 0.06s both;
+        }
+
+        .js .hero-role {
+            animation: intro-in 0.5s ease 0.14s both;
+        }
+
+        .js .hero-content > p:last-of-type {
+            animation: intro-in 0.5s ease 0.22s both;
+        }
+
+        .js .btn-group {
+            animation: intro-in 0.5s ease 0.3s both;
+        }
+
+        .js .hero-image {
+            animation: intro-in 0.52s ease 0.4s both;
+        }
+
         .js .reveal {
             opacity: 0;
-            transform: translateY(0.65rem);
+            transform: translateY(20px);
         }
 
         .js .reveal.is-inview {
             opacity: 1;
             transform: none;
-            transition: opacity 0.4s ease, transform 0.4s ease;
+            transition: opacity 0.45s ease, transform 0.45s ease;
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -889,11 +980,23 @@
                 transition: none !important;
             }
 
+            .js .site-header,
+            .js .hero h1,
+            .js .hero-role,
+            .js .hero-content > p:last-of-type,
+            .js .btn-group,
+            .js .hero-image,
             .js .reveal,
             .js .reveal.is-inview,
             .project-card:hover,
             .project-card:focus-visible,
-            .hero-image img:hover {
+            .hero-image img:hover,
+            .btn:hover,
+            .btn:focus-visible,
+            .back-top:hover,
+            .back-top:focus-visible,
+            .close-btn:hover,
+            .close-btn:focus-visible {
                 opacity: 1;
                 transform: none;
                 box-shadow: none;
@@ -1127,7 +1230,7 @@
                 <div class="social-links">
                     <a href="mailto:kirangiri3210@gmail.com" class="social-link">Email</a>
                     <a href="https://github.com/kirangiri3210-wq" target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>
-                    <a href="https://instagram.com/kiran_316" target="_blank" rel="noopener noreferrer" class="social-link">Instagram</a>
+                    <a href="https://www.instagram.com/kiran3_16/" target="_blank" rel="noopener noreferrer" class="social-link">Instagram</a>
                 </div>
             </div>
             <form id="contactForm">
